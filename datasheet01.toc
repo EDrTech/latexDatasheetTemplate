@@ -1,0 +1,27 @@
+\contentsline {section}{\numberline {1}Features}{1}{section.1}%
+\contentsline {section}{\numberline {2}Description}{1}{section.2}%
+\contentsline {section}{\numberline {3}Device Overview}{3}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Part Number Options}{3}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Pin Configuration and Functions}{3}{subsection.3.2}%
+\contentsline {section}{\numberline {4}Specifications}{4}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Absolute Maximum Ratings}{4}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Recommended Operating Conditions}{4}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Electrical Characteristics}{4}{subsection.4.3}%
+\contentsline {section}{\numberline {5}Typical Characteristics}{5}{section.5}%
+\contentsline {section}{\numberline {6}Functional Block Diagram}{7}{section.6}%
+\contentsline {section}{\numberline {7}Feature Description}{8}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Feature A}{8}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Feature B}{8}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Feature C}{8}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Feature D}{8}{subsection.7.4}%
+\contentsline {section}{\numberline {8}Application Information}{9}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Typical Application}{9}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Design Considerations}{9}{subsection.8.2}%
+\contentsline {section}{\numberline {9}Power Supply Recommendations}{10}{section.9}%
+\contentsline {section}{\numberline {10}Layout Guidelines}{11}{section.10}%
+\contentsline {subsection}{\numberline {10.1}PCB Recommendations}{11}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}Thermal Considerations}{11}{subsection.10.2}%
+\contentsline {section}{\numberline {11}Package Information}{12}{section.11}%
+\contentsline {subsection}{\numberline {11.1}Mechanical Dimensions}{12}{subsection.11.1}%
+\contentsline {subsection}{\numberline {11.2}Land Pattern Recommendations}{12}{subsection.11.2}%
+\contentsline {section}{\numberline {12}Ordering Information}{13}{section.12}%

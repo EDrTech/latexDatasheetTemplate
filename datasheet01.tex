@@ -1,0 +1,296 @@
+% === START TEMPLATE WITH CONFIGURABLE WATERMARK POSITION ===
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[left=50pt,right=50pt,top=100pt,bottom=100pt]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[hidelinks]{hyperref}
+\usepackage{graphicx}
+\usepackage[table]{xcolor}
+\usepackage{transparent}      % for opacity
+\usepackage{tabularx}
+\usepackage{stackengine}
+\usepackage{mwe}             % example-image, example-image-a, etc.
+\usepackage{tocloft}
+\usepackage[hypcap=false,font=small]{caption}
+\usepackage{capt-of}         % for captionof outside floats
+\usepackage{multicol}
+\usepackage{ragged2e}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{etoolbox}
+\usepackage{eso-pic}         % for background images
+
+% === User-Configurable Variables ===
+\newcommand{\ProductName}{PRODUCT NAME HERE}
+\newcommand{\ProductNameShort}{SHORTNAME}
+\newcommand{\WebsiteLinkText}{www.example.com}
+\newcommand{\ReleaseDate}{\today}
+\newcommand{\Revision}{Rev.\ X.Y}
+
+% === Watermark Variables ===
+\newcommand{\WatermarkPath}{example-image}   % built-in placeholder
+\newcommand{\WatermarkScale}{0}              % scale factor (0 to disable watermark)
+\newcommand{\WatermarkAngle}{45}             % rotation angle
+\newcommand{\WatermarkOpacity}{0.1}          % 0 (transparent) to 1 (opaque)
+\newcommand{\WatermarkPosX}{0.1\paperwidth}  % horizontal starting point
+\newcommand{\WatermarkPosY}{0.1\paperheight} % vertical starting point
+
+% Place watermark on every page using configurable origin
+\AddToShipoutPictureBG{%
+	\AtPageLowerLeft{%
+		\raisebox{\WatermarkPosY}[0pt][0pt]{%
+			\makebox[\WatermarkPosX][l]{%
+				\transparent{\WatermarkOpacity}%
+				\includegraphics[scale=\WatermarkScale,angle=\WatermarkAngle]{\WatermarkPath}%
+			}%
+		}%2
+	}%
+}
+
+% === TOC configuration ===
+\renewcommand{\contentsname}{Table of Contents}
+\setcounter{tocdepth}{2}
+\renewcommand{\cftdotsep}{1.5}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsubsecleader}{\cftdotfill{\cftdotsep}}
+\setlength{\cftbeforesecskip}{0.5em}
+\setlength{\cftbeforesubsecskip}{0.5em}
+
+% === Sans-serif font ===
+\renewcommand{\familydefault}{\sfdefault}
+
+% === Header/Footer styling ===
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\setlength{\headheight}{60pt}
+\setlength{\headsep}{10pt}
+\setlength{\footskip}{50pt}
+\lhead{\Large\textbf{\ProductNameShort}}
+\rhead{%
+	\includegraphics[height=0.6cm]{example-image-a}\\[-0.5em]
+	{\scriptsize\textcolor{gray!50}{\WebsiteLinkText}}%
+}
+\fancyfoot[L]{\footnotesize\textcolor{gray!50}{\ReleaseDate}}
+\fancyfoot[C]{\footnotesize\textcolor{gray!50}{\Revision}}
+\fancyfoot[R]{\footnotesize\textcolor{gray!50}{\thepage}}
+
+\fancypagestyle{plain}{%
+	\fancyhf{}%
+	\lhead{\Large\textbf{\ProductNameShort}}%
+	\rhead{%
+		\includegraphics[height=0.6cm]{example-image-a}\\[-0.5em]
+		{\scriptsize\textcolor{gray!50}{\WebsiteLinkText}}%
+	}%
+	\fancyfoot[L]{\footnotesize\textcolor{gray!50}{\ReleaseDate}}%
+	\fancyfoot[C]{\footnotesize\textcolor{gray!50}{\Revision}}%
+	\fancyfoot[R]{\footnotesize\textcolor{gray!50}{\thepage}}%
+	\renewcommand{\headrulewidth}{0.4pt}%
+	\renewcommand{\footrulewidth}{0.4pt}%
+}
+
+% === Section/Subsection numbering & formatting ===
+\setcounter{secnumdepth}{3}
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+\titleformat{\subsection}[hang]
+{\large\bfseries}{\thesubsection}{1em}{}
+[\color{gray!30}\rule{\textwidth}{0.4pt}]
+\titlespacing*{\subsection}{0pt}{1.5\baselineskip}{1\baselineskip}
+
+\newcommand{\sectionbreak}{\clearpage}
+
+\begin{document}
+	\flushbottom
+	
+	%% Title Page
+	\begin{center}
+		{\LARGE\bfseries \ProductName\par}
+		\vspace{1ex}
+		{\normalsize Datasheet Template\par}
+	\end{center}
+	\vspace{2\baselineskip}
+	
+	%% Front page content
+	\noindent
+	\begin{minipage}[t]{0.45\textwidth}
+		\section{Features}\label{sec:features}
+		\vspace{\baselineskip}
+		\begin{itemize}
+			\item -- FEATURE A
+			\item -- FEATURE B
+			\item -- FEATURE C
+			\item -- FEATURE D
+		\end{itemize}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.5\textwidth}
+		\section{Description}\label{sec:desc}
+		\vspace{\baselineskip}
+		This template provides a structured outline for a generic datasheet,
+		including configurable headers, footers, and a background watermark.
+		\par\medskip
+		\begin{center}
+			\includegraphics[width=5cm]{example-image}
+			\captionof{figure}{Module Overview}\label{fig:component}
+		\end{center}
+	\end{minipage}
+	
+	%% TOC + Revision History (same page)
+	\section*{\contentsname}
+	\begin{multicols}{2}
+		{\let\oldcontentsname\contentsname
+			\renewcommand{\contentsname}{}
+			\tableofcontents
+			\let\contentsname\oldcontentsname}
+	\end{multicols}
+	
+	\vspace{1em}
+	\noindent\textbf{Revision History}\par
+	\begin{tabularx}{\textwidth}{|l|X|}
+		\hline
+		\rowcolor{gray!25}\textbf{Date} & \textbf{Description} \\ \hline
+		\ReleaseDate & Initial release of template \\ \hline
+	\end{tabularx}
+	\captionof{table}{Revision History}\label{tab:rev}
+	
+	% Main sections each on new page:
+	\sectionbreak
+	
+	\section{Device Overview}\label{sec:overview}
+	\subsection{Part Number Options}\label{sec:overview.1}
+	\begin{tabularx}{\textwidth}{|X|X|X|}
+		\hline
+		\rowcolor{gray!25}\textbf{PART NUMBER} & \textbf{PACKAGE} & \textbf{DESCRIPTION} \\ \hline
+		PART-0001 & GENERIC SIZE & Generic description \\ \hline
+	\end{tabularx}
+	\captionof{table}{Part Number Options}\label{tab:overview1}
+	
+	\subsection{Pin Configuration and Functions}\label{sec:overview.2}
+	\begin{center}
+		\includegraphics[width=0.6\textwidth]{example-image-a}
+		\captionof{figure}{Pinout Diagram}\label{fig:pinout}
+	\end{center}
+	\begin{itemize}
+		\item PIN1 -- Generic function
+		\item PIN2 -- Generic function
+		\item PIN3 -- Generic function
+		\item PIN4 -- Generic function
+	\end{itemize}
+	
+	\sectionbreak
+	
+	\section{Specifications}\label{sec:specs}
+	\subsection{Absolute Maximum Ratings}\label{sec:specs.1}
+	\begin{tabularx}{\textwidth}{|X|X|X|}
+		\hline
+		\rowcolor{gray!25}\textbf{PARAMETER} & \textbf{MAX RATING} & \textbf{UNIT} \\ \hline
+		PARAM A & VALUE RANGE & UNIT \\ \hline
+		PARAM B & VALUE RANGE & UNIT \\ \hline
+	\end{tabularx}
+	\captionof{table}{Absolute Maximum Ratings}\label{tab:amax}
+	
+	\subsection{Recommended Operating Conditions}\label{sec:specs.2}
+	\begin{tabularx}{\textwidth}{|X|X|X|}
+		\hline
+		\rowcolor{gray!25}\textbf{PARAMETER} & \textbf{TYPICAL} & \textbf{UNIT} \\ \hline
+		PARAM C & TYPICAL & UNIT \\ \hline
+		PARAM D & TYPICAL & UNIT \\ \hline
+	\end{tabularx}
+	\captionof{table}{Recommended Operating Conditions}\label{tab:opcond}
+	
+	\subsection{Electrical Characteristics}\label{sec:specs.3}
+	\begin{tabularx}{\textwidth}{|X|X|X|}
+		\hline
+		\rowcolor{gray!25}\textbf{PARAMETER} & \textbf{TYPICAL} & \textbf{UNIT} \\ \hline
+		PARAM E & TYPICAL & UNIT \\ \hline
+		PARAM F & TYPICAL & UNIT \\ \hline
+	\end{tabularx}
+	\captionof{table}{Electrical Characteristics}\label{tab:elec}
+	
+	\sectionbreak
+	
+	\section{Typical Characteristics}\label{sec:typ}
+	\begin{center}
+		\includegraphics[width=\textwidth]{example-image-b}
+		\captionof{figure}{Characteristic Chart 1}\label{fig:chart1}
+		\medskip
+		
+		\includegraphics[width=\textwidth]{example-image-c}
+		\captionof{figure}{Characteristic Chart 2}\label{fig:chart2}
+	\end{center}
+	
+	\sectionbreak
+	
+	\section{Functional Block Diagram}\label{sec:block}
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{example-image}
+		\captionof{figure}{Block Diagram}\label{fig:block}
+	\end{center}
+	
+	\sectionbreak
+	
+	\section{Feature Description}\label{sec:features_desc}
+	\subsection{Feature A}\label{sec:features_desc.1}
+	Generic feature description.
+	\subsection{Feature B}\label{sec:features_desc.2}
+	Generic feature description.
+	\subsection{Feature C}\label{sec:features_desc.3}
+	Generic feature description.
+	\subsection{Feature D}\label{sec:features_desc.4}
+	Generic feature description.
+	
+	\sectionbreak
+	
+	\section{Application Information}\label{sec:app}
+	\subsection{Typical Application}\label{sec:app.1}
+	\begin{center}
+		\includegraphics[width=\textwidth]{example-image-a}
+		\captionof{figure}{Application Diagram}\label{fig:app}
+	\end{center}
+	\subsection{Design Considerations}\label{sec:app.2}
+	\begin{itemize}
+		\item -- Generic consideration A
+		\item -- Generic consideration B
+	\end{itemize}
+	
+	\sectionbreak
+	
+	\section{Power Supply Recommendations}\label{sec:ps}
+	Generic power supply recommendation text.
+	
+	\sectionbreak
+	
+	\section{Layout Guidelines}\label{sec:layout}
+	\subsection{PCB Recommendations}\label{sec:layout.1}
+	Generic PCB layout guidance.
+	\subsection{Thermal Considerations}\label{sec:layout.2}
+	Generic thermal management guidance.
+	
+	\sectionbreak
+	
+	\section{Package Information}\label{sec:package}
+	\subsection{Mechanical Dimensions}\label{sec:package.1}
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{example-image-b}
+		\captionof{figure}{Mechanical Drawing}\label{fig:mech}
+	\end{center}
+	\subsection{Land Pattern Recommendations}\label{sec:package.2}
+	\begin{itemize}
+		\item Generic land pattern recommendation A
+		\item Generic land pattern recommendation B
+	\end{itemize}
+	
+	\sectionbreak
+	
+	\section{Ordering Information}\label{sec:order}
+	\begin{tabularx}{\textwidth}{|X|X|X|}
+		\hline
+		\rowcolor{gray!25}\textbf{PART NUMBER} & \textbf{ORDER CODE} & \textbf{DESCRIPTION} \\ \hline
+		PART-0001 & ORDER-1234 & Generic ordering info \\ \hline
+	\end{tabularx}
+	\captionof{table}{Ordering Information}\label{tab:order}
+	
+\end{document}
